@@ -1,22 +1,54 @@
 :icons: font
 
-= .NET 6 -- Face Recognition
+== .NET 6 - Face Recognition
 
-Simple face recognition made with C# and .NET Machine Learning
+link:https://nell-online.at/csharp-faceid[Download Here]
 
-[plantuml]
-----
-Example Code
-----
+link:https://github.com/paul1610/csharp-faceid[Repository]
 
-== Example
+Simple face recognition made with C# and .NET 6 Machine Learning. This project was created in the subjects Programming C / C# at school.
 
-NOTE: Example Note
+=== Work Distribution
+* *Niklas Trinkl*
+** Frontend & Interface
 
-[source,bash]
-----
-Example Source
-----
+* *Jonas Pamminger*
+** Contact => Model and Images
 
-* *Example Important!*
-** Example
+* *Nell Paul*
+** Readme, Webpage
+** Model
+** Contact => Model and Frontend
+
+NOTE: We are allways using the comments of the issues to track our process!
+
+
+== How to install [code]
+
+Simply pull the project from the repository and start the Visual Studio pass:[<u>.sln</u>] file. After the loading is done, switch the ouput next to the start to pass:[<u>csharpFaceId</u>].
+
+== How to install [exe]
+
+Simply link:https://nell-online.at[download] the pass:[<u>.exe</u>] program from the linked website and start it by just double-clicking it.
+
+== How to use
+
+Now a simple interface should pop up, with a live preview of your camera.
+You can add your own images to be trained by clicking the button!
+
+//=== Example
+
+//[#img-sunset]
+//.A mountain sunset
+//[link=https://www.flickr.com/photos/javh/5448336655]
+//image::sunset.jpg[Sunset,300,200]
+
+//NOTE: Example Note
+
+//[source,csharp]
+//----
+//Example Source
+//----
+
+//* *Example Important!*
+//** Example
