@@ -2,7 +2,7 @@
 
 == .NET 6 - Face Recognition
 
-link:https:nell-online.at/csharp-faceid[Download Here]
+link:https://nell-online.at/csharp-faceid[Download Here]
 
 link:https://github.com/paul1610/csharp-faceid[Repository]
 
@@ -29,7 +29,7 @@ Simply pull the project from the repository and start the Visual Studio  pass:[<
 
 == How to install [exe]
 
-Simply link:https:nell-online.at[download] the .exe program from the linked website and start it by just double-clicking it.
+Simply link:https://nell-online.at[download] the .exe program from the linked website and start it by just double-clicking it.
 
 == How to use
 
