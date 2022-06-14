@@ -1,0 +1,22 @@
+:icons: font
+
+= .NET 6 -- Face Recognition
+
+Simple face recognition made with C# and .NET Machine Learning
+
+[plantuml]
+----
+Example Code
+----
+
+== Example
+
+NOTE: Example Note
+
+[source,bash]
+----
+Example Source
+----
+
+* *Example Important!*
+** Example
