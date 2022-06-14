@@ -9,10 +9,11 @@ namespace FaceModel_ConsoleApp
     {
         static void Main(string[] args)
         {
+            string path = PathSettings.TestImageFolerPath + @"\Jonas\jonas1.jpg";
             // Create single instance of sample data from first line of dataset for model input
             FaceModel.ModelInput sampleData = new FaceModel.ModelInput()
             {
-                ImageSource = @"C:\Users\nellp\Desktop\Schule\2DHIF - 2021-22\PR0 OO\Übungen\08_Project\csharp-faceid\TrainData\Jonas\WIN_20220614_13_33_44_Pro.jpg",
+                ImageSource = path,
             };
 
             // Make a single prediction on the sample data and print results
@@ -21,7 +22,7 @@ namespace FaceModel_ConsoleApp
             Console.WriteLine("Using model to make single prediction -- Comparing actual Label with predicted Label from sample data...\n\n");
 
 
-            Console.WriteLine($"ImageSource: {@"C:\Users\nellp\Desktop\Schule\2DHIF - 2021-22\PR0 OO\Übungen\08_Project\csharp-faceid\TrainData\Jonas\WIN_20220614_13_33_44_Pro.jpg"}");
+            Console.WriteLine($"ImageSource: {path}");
 
 
             Console.WriteLine($"\n\nPredicted Label value: {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n\n");
