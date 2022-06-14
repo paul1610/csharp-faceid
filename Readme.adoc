@@ -25,11 +25,11 @@ NOTE: We are allways using the comments of the issues to track our process!
 
 == How to install [code]
 
-Simply pull the project from the repository and start the Visual Studio  pass:[<u>.sln</u>] file. After the loading is done, switch the ouput next to the start to pass:[<u>csharpFaceId</u>].
+Simply pull the project from the repository and start the Visual Studio pass:[<u>.sln</u>] file. After the loading is done, switch the ouput next to the start to pass:[<u>csharpFaceId</u>].
 
 == How to install [exe]
 
-Simply link:https://nell-online.at[download] the .exe program from the linked website and start it by just double-clicking it.
+Simply link:https://nell-online.at[download] the pass:[<u>.exe</u>] program from the linked website and start it by just double-clicking it.
 
 == How to use
 
