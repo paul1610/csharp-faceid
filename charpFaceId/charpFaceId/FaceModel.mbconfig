@@ -1,3 +1,10 @@
 ﻿{
-  "TrainingConfigurationVersion": 0
+  "TrainingTime": 0,
+  "Scenario": "ImageClassification",
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "Type": "TrainingConfig",
+  "Version": 1
 }

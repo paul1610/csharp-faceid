@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jonas Pamminger\\OneDrive - HTBLA Leonding\\Desktop\\Schule\\2 Klasse\\Prog_KAS\\csharp-faceid\\charpFaceId\\charpFaceId\\charpFaceId.csproj",
-      "projectName": "charpFaceId",
-      "projectPath": "C:\\Users\\Jonas Pamminger\\OneDrive - HTBLA Leonding\\Desktop\\Schule\\2 Klasse\\Prog_KAS\\csharp-faceid\\charpFaceId\\charpFaceId\\charpFaceId.csproj",
+      "projectUniqueName": "C:\\Users\\Jonas Pamminger\\OneDrive - HTBLA Leonding\\Desktop\\Schule\\2 Klasse\\Prog_KAS\\csharp-faceid\\charpFaceId\\charpFaceId\\csharpFaceId.csproj",
+      "projectName": "csharpFaceId",
+      "projectPath": "C:\\Users\\Jonas Pamminger\\OneDrive - HTBLA Leonding\\Desktop\\Schule\\2 Klasse\\Prog_KAS\\csharp-faceid\\charpFaceId\\charpFaceId\\csharpFaceId.csproj",
       "packagesPath": "C:\\Users\\Jonas Pamminger\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Jonas Pamminger\\OneDrive - HTBLA Leonding\\Desktop\\Schule\\2 Klasse\\Prog_KAS\\csharp-faceid\\charpFaceId\\charpFaceId\\obj\\",
       "projectStyle": "PackageReference",
