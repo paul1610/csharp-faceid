@@ -7,6 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Image x:Name="videoPlayer" Margin="10,0,10,70" />
+        <ComboBox x:Name="comboBox"
+                  Width="167"
+                  Height="21"
+                  Margin="10,0,0,25"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Bottom"
+                  DisplayMemberPath="Name"
+                  ItemsSource="{Binding VideoDevices}"
+                  SelectedItem="{Binding CurrentDevice}" />
+        <Label Width="167"
+               Height="24"
+               Margin="10,0,0,46"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Content="Select video source" />
+        <Button Width="67"
+                Height="21"
+                Margin="213,0,0,25"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStart_Click"
+                Content="Start" />
+        <Button Width="67"
+                Height="21"
+                Margin="296,0,0,25"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStop_Click"
+                Content="Stop" />
     </Grid>
 </Window>
