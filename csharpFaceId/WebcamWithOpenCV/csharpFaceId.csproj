@@ -83,8 +83,6 @@
     <Compile Include="BitmapExtensions.cs" />
     <Compile Include="CameraDevice.cs" />
     <Compile Include="CameraDevicesEnumerator.cs" />
-    <Compile Include="OpenCVQRCodeReader.cs" />
-    <Compile Include="QRCodeReadEventArgs.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="WebcamStreaming.cs" />
     <Page Include="MainWindow.xaml">
@@ -118,6 +116,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="FaceModel.mbconfig" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -178,6 +177,18 @@
     <PackageReference Include="ZXing.Net">
       <Version>0.16.6</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup Label="FaceModel">
+    <None Include="FaceModel.consumption.cs">
+      <DependentUpon>FaceModel.mbconfig</DependentUpon>
+    </None>
+    <None Include="FaceModel.training.cs">
+      <DependentUpon>FaceModel.mbconfig</DependentUpon>
+    </None>
+    <None Include="FaceModel.zip">
+      <DependentUpon>FaceModel.mbconfig</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
