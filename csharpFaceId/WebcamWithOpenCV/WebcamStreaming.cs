@@ -1,5 +1,6 @@
 ﻿using ImageProcessor;
 using ImageProcessor.Imaging;
+using Microsoft.ML.Data;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using System;
@@ -8,6 +9,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Microsoft.ML;
+using System.Windows;
 
 namespace WebcamWithOpenCV
 {
@@ -25,9 +28,6 @@ namespace WebcamWithOpenCV
         public byte[] LastPngFrame { get; private set; }
         public bool FlipHorizontally = true;
 
-
-        private int _currentBarcodeReadFrameCount = 0;
-        private const int _readBarcodeEveryNFrame = 10;
 
         public WebcamStreaming(
             Image imageControlForRendering,
@@ -137,7 +137,7 @@ namespace WebcamWithOpenCV
                         .Load(_lastFrame)
                         .Resize(new ResizeLayer(
                             size: new System.Drawing.Size(_frameWidth, _frameHeight),
-                            resizeMode: ResizeMode.Crop,
+                            resizeMode: ImageProcessor.Imaging.ResizeMode.Crop,
                             anchorPosition: AnchorPosition.Center))
                         .Save(stream);
                     LastPngFrame = stream.ToArray();
@@ -148,7 +148,81 @@ namespace WebcamWithOpenCV
                 LastPngFrame = null;
             }
         }
+        public void AnalyzeImage()
+        {
+            FaceModel.ModelInput sampleData = new FaceModel.ModelInput()
+            {
+                ImageSource = @"C:\Users\Jonas Pamminger\OneDrive - HTBLA Leonding\Desktop\Schule\2 Klasse\Prog_KAS\csharp-faceid\csharp-faceid\TrainData\Jonas\WIN_20220614_13_33_44_Pro.jpg",
+                Label = "WIN_20220614_13_33_44_Pro.jpg"
+            };
 
+            // Make a single prediction on the sample data and print results
+            var predictionResult = FaceModel.Predict(sampleData);
+            MessageBox.Show($"\n\nPredicted Label value: {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n\n");
+
+        }
+        public partial class FaceModel
+        {
+            /// <summary>
+            /// model input class for FaceModel.
+            /// </summary>
+            #region model input class
+            public class ModelInput
+            {
+                [ColumnName(@"Label")]
+                public string Label { get; set; }
+
+                [ColumnName(@"ImageSource")]
+                public string ImageSource { get; set; }
+
+            }
+
+            #endregion
+
+            /// <summary>
+            /// model output class for FaceModel.
+            /// </summary>
+            #region model output class
+            public class ModelOutput
+            {
+                [ColumnName("PredictedLabel")]
+                public string Prediction { get; set; }
+
+                public float[] Score { get; set; }
+            }
+
+            #endregion
+
+            private static string MLNetModelPath = Path.GetFullPath("FaceModel.zip");
+
+            public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
+
+            /// <summary>
+            /// Use this method to predict on <see cref="ModelInput"/>.
+            /// </summary>
+            /// <param name="input">model input.</param>
+            /// <returns><seealso cref=" ModelOutput"/></returns>
+            public static ModelOutput Predict(ModelInput input)
+            {
+                try
+                {
+                    var predEngine = PredictEngine.Value;
+                    return predEngine.Predict(input);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return null;
+            }
+
+            private static PredictionEngine<ModelInput, ModelOutput> CreatePredictEngine()
+            {
+                var mlContext = new MLContext();
+                ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out var _);
+                return mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
+            }
+        }
         public void Dispose()
         {
             _cancellationTokenSource?.Cancel();

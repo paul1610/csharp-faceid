@@ -77,7 +77,7 @@ namespace WebcamWithOpenCV
 
         private void btnPic_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Test");
+            _webcamStreaming.AnalyzeImage();
         }
     }
 }
