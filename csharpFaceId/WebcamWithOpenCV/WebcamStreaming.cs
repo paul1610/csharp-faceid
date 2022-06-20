@@ -28,9 +28,6 @@ namespace WebcamWithOpenCV
         public byte[] LastPngFrame { get; private set; }
         public bool FlipHorizontally = true;
 
-        private int _currentBarcodeReadFrameCount = 0;
-        private const int _readBarcodeEveryNFrame = 10;
-
         public WebcamStreaming(
             Image imageControlForRendering,
             int frameWidth,
@@ -154,8 +151,7 @@ namespace WebcamWithOpenCV
         {
             FaceModel.ModelInput sampleData = new FaceModel.ModelInput()
             {
-                ImageSource = @"C:\Users\Jonas Pamminger\OneDrive - HTBLA Leonding\Desktop\Schule\2 Klasse\Prog_KAS\csharp-faceid\csharp-faceid\TrainData\Jonas\WIN_20220614_13_33_44_Pro.jpg",
-                Label = "WIN_20220614_13_33_44_Pro.jpg"
+                ImageSource = Path.GetFullPath("screenshot.png")
             };
 
             // Make a single prediction on the sample data and print results

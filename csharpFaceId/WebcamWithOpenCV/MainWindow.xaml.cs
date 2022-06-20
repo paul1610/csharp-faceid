@@ -76,6 +76,7 @@ namespace WebcamWithOpenCV
                 encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
                 encoder.Save(fileStream);
             }
+            _webcamStreaming.AnalyzeImage();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
