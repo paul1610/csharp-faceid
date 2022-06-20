@@ -25,7 +25,6 @@ namespace WebcamWithOpenCV
         public byte[] LastPngFrame { get; private set; }
         public bool FlipHorizontally = true;
 
-
         private int _currentBarcodeReadFrameCount = 0;
         private const int _readBarcodeEveryNFrame = 10;
 

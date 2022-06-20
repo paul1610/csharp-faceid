@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Windows;
+using System.Drawing;
 using System.Windows.Documents;
 using System.Windows.Media;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace WebcamWithOpenCV
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         private WebcamStreaming _webcamStreaming;
 
@@ -55,18 +60,21 @@ namespace WebcamWithOpenCV
         private async void btnStop_Click(object sender, RoutedEventArgs e)
         {
 
-            try
-            {
-                await _webcamStreaming.Stop();
-                btnStop.IsEnabled = false;
-                btnStart.IsEnabled = true;
+            await _webcamStreaming.Stop();
+            btnStop.IsEnabled = false;
+            btnStart.IsEnabled = true;
 
-                // To save the screenshot
-                // var screenshot = _webcamStreaming.LastPngFrame;
-            }
-            catch (Exception ex)
+            var picture = _webcamStreaming.LastPngFrame;
+            string fileName = "screenshot.png";
+            using (var fileStream = new FileStream(fileName, FileMode.Create))
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(picture);
+                bitmapImage.EndInit();
+                encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+                encoder.Save(fileStream);
             }
         }
 
@@ -77,7 +85,8 @@ namespace WebcamWithOpenCV
 
         private void btnPic_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Test");
+
         }
+
     }
 }
