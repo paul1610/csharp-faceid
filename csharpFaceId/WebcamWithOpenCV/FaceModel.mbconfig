@@ -4,11 +4,7 @@
   "DataSource": {
     "Type": "Folder",
     "Version": 1,
-<<<<<<< HEAD
     "FolderPath": "C:\\Users\\Jonas Pamminger\\OneDrive - HTBLA Leonding\\Desktop\\Schule\\2 Klasse\\Prog_KAS\\csharp-faceid\\csharp-faceid\\TrainData"
-=======
-    "FolderPath": "C:\\Users\\nellp\\Desktop\\Schule\\2DHIF - 2021-22\\PR0 OO\\Übungen\\08_Project\\csharp-faceid\\TrainData"
->>>>>>> d214a75a7955cae8b6b9aada729742414e644396
   },
   "Environment": {
     "Type": "LocalCPU",
@@ -22,13 +18,8 @@
         "Version": 0,
         "Type": "Trial",
         "TrainerName": "ImageClassification",
-<<<<<<< HEAD
-        "Score": 0.919,
-        "RuntimeInSeconds": 280.7
-=======
-        "Score": 0.9929,
-        "RuntimeInSeconds": 324.4
->>>>>>> d214a75a7955cae8b6b9aada729742414e644396
+        "Score": 0.8891,
+        "RuntimeInSeconds": 279.3
       }
     ],
     "Pipeline": "[{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"Label\"],\"Outputs\":[\"Label\"]},{\"OutputColumnName\":\"ImageSource_featurized\",\"ImageFolder\":\"\",\"InputColumnName\":\"ImageSource\",\"EstimatorType\":\"LoadRawImageBytes\",\"Inputs\":[\"ImageSource\"],\"Outputs\":[\"ImageSource_featurized\"]},{\"EstimatorType\":\"CopyColumns\",\"Inputs\":[\"ImageSource_featurized\"],\"Outputs\":[\"Features\"]},{\"LabelColumnName\":\"Label\",\"EstimatorType\":\"ImageClassificationMulti\",\"Inputs\":[\"Features\"],\"Outputs\":[\"Score\"]},{\"EstimatorType\":\"MapKeyToValue\",\"Inputs\":[\"PredictedLabel\"],\"Outputs\":[\"PredictedLabel\"]}]",
