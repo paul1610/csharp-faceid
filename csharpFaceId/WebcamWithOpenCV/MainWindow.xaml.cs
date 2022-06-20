@@ -85,7 +85,7 @@ namespace WebcamWithOpenCV
 
         private void btnPic_Click(object sender, RoutedEventArgs e)
         {
-
+			
         }
 
     }
