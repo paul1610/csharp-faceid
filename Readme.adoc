@@ -27,28 +27,11 @@ NOTE: We are allways using the comments of the issues to track our process!
 
 Simply pull the project from the repository and start the Visual Studio pass:[<u>.sln</u>] file. After the loading is done, switch the ouput next to the start to pass:[<u>csharpFaceId</u>].
 
-== How to install [exe]
+== How to install [exzipe]
 
-Simply link:https://nell-online.at[download] the pass:[<u>.exe</u>] program from the linked website and start it by just double-clicking it.
+Simply link:https://nell-online.at[download] the pass:[<u>.zip</u>] program from the linked website and start it by just unziping & following the [code] steps.
 
 == How to use
 
 Now a simple interface should pop up, with a live preview of your camera.
-You can add your own images to be trained by clicking the button!
-
-//=== Example
-
-//[#img-sunset]
-//.A mountain sunset
-//[link=https://www.flickr.com/photos/javh/5448336655]
-//image::sunset.jpg[Sunset,300,200]
-
-//NOTE: Example Note
-
-//[source,csharp]
-//----
-//Example Source
-//----
-
-//* *Example Important!*
-//** Example
+Just press "Take photo" and wait for the result on the right side.
