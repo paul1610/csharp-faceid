@@ -1,0 +1,44 @@
+body {
+    height: 100vh;
+}
+
+h2 {
+    display:inline-block;
+    margin-top: 2em;
+    margin-left: 4ch;
+    font-size: xx-large;
+    color: #485785;
+}
+
+article {
+    margin-left: 4em;
+    font-size: x-large;
+    color: #485785;
+}
+
+.navbar-brand {
+    font-size: xx-large;
+}
+
+.wrapper {
+    min-width: 20em;
+}
+
+.nav-link {
+    font-size: x-large;
+}
+
+.spacer {
+    margin-top: 5%;
+}
+
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
