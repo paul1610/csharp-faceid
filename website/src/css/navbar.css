@@ -1,0 +1,103 @@
+.navGrid {
+    display: grid;
+    grid-template-columns: 18% 82%;
+    grid-template-rows: 50% [nav] 50% 50%;
+    white-space: nowrap;
+    gap: 0px 0px;
+    grid-template-areas:
+    "nav main"
+    "nav main"
+    "nav main";
+}
+
+.active{
+    font-weight: bold;
+    color: #8495cc;
+}
+
+.dropdownElement{
+    margin-bottom: .5em;
+}
+
+.navPart {
+    grid-area: nav;
+}
+
+.nav {
+    background-color:transparent;
+    box-shadow:none;
+}
+
+.main {
+    grid-area: main;
+}
+
+.gridSpacer {
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.banner {
+    grid-area: banner;
+    text-align: center;
+    background-color: #0e213d;
+    border-radius: 0 0 25px 25px;
+    width: 115%;
+}
+
+a#firstSymbol{
+    margin-top: 22em;
+    margin-bottom: 0.2em;
+}
+
+.symbol:after {
+    display: block;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.4s;
+}
+
+.symbol:hover:after {
+    width: 100%;
+}
+
+.hover:hover{
+    color: #56baed;
+}
+
+.noHover{
+    color: #69769c;
+}
+
+.noShow {
+    display: none;
+    background-color: #d9e3f1;
+}
+
+.spacer {
+    margin-top: 4em;
+}
+
+#myBar {
+    width: 10%;
+    height: 30px;
+    background-color: #56baed;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: white;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 50px;
+    height: 50px;
+    margin-left: 50%;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
