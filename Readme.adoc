@@ -27,9 +27,9 @@ NOTE: We are allways using the comments of the issues to track our process!
 
 Simply pull the project from the repository and start the Visual Studio pass:[<u>.sln</u>] file. After the loading is done, switch the ouput next to the start to pass:[<u>csharpFaceId</u>].
 
-== How to install [exzipe]
+== How to install [zip]
 
-Simply link:https://nell-online.at[download] the pass:[<u>.zip</u>] program from the linked website and start it by just unziping & following the [code] steps.
+Simply link:https://nell-online.at/csharpfaceid/download/csharpFaceId.zip[download] the pass:[<u>.zip</u>] program from the linked website and start it by just unziping & following the [code] steps.
 
 == How to use
 
