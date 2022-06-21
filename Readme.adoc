@@ -15,7 +15,7 @@ Simple face recognition made with C# and .NET 6 Machine Learning. This project w
 * *Jonas Pamminger*
 ** Contact => Model and Images
 
-* *Nell Paul*
+* *Paul Nell*
 ** Readme, Webpage
 ** Model
 ** Contact => Model and Frontend
