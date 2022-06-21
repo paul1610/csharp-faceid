@@ -59,7 +59,6 @@ namespace WebcamWithOpenCV
 
         private async void btnStop_Click(object sender, RoutedEventArgs e)
         {
-
             await _webcamStreaming.Stop();
             btnStop.IsEnabled = false;
             btnStart.IsEnabled = true;
@@ -76,7 +75,9 @@ namespace WebcamWithOpenCV
                 encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
                 encoder.Save(fileStream);
             }
-            _webcamStreaming.AnalyzeImage();
+            string text = _webcamStreaming.AnalyzeImage();
+            finalResults.Text += text;
+            _webcamStreaming?.Dispose();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

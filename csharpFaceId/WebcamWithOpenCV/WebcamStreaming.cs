@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Microsoft.ML;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace WebcamWithOpenCV
 {
@@ -147,7 +148,7 @@ namespace WebcamWithOpenCV
                 LastPngFrame = null;
             }
         }
-        public void AnalyzeImage()
+        public string AnalyzeImage()
         {
             FaceModel.ModelInput sampleData = new FaceModel.ModelInput()
             {
@@ -156,8 +157,7 @@ namespace WebcamWithOpenCV
 
             // Make a single prediction on the sample data and print results
             var predictionResult = FaceModel.Predict(sampleData);
-            MessageBox.Show($"\n\nPredicted Label value: {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n\n");
-
+            return $"\nPredicted Label value: {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n\n";
         }
         public partial class FaceModel
         {

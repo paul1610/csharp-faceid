@@ -5,24 +5,84 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WebcamWithOpenCV"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="OpenCV in WPF"
-    Width="800"
-    Height="550"
+    Title="CSharp Face ID"
+    Width="900"
+    Height="600"
     Closing="Window_Closing"
+    Background="#93A5AD" 
     mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#84A3B3"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5"  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="117*" />
+            <RowDefinition Height="103*"/>
             <RowDefinition Height="auto" />
+
         </Grid.RowDefinitions>
 
         <StackPanel
             Grid.Row="0"
             HorizontalAlignment="Center"
-            Orientation="Horizontal">
+            Orientation="Horizontal" Margin="0,0,0,234" Grid.RowSpan="2">
             <TextBlock
                 Margin="10"
                 VerticalAlignment="Center"
@@ -66,7 +126,7 @@
         <Grid
             Grid.Row="1"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+            VerticalAlignment="Top" Margin="0,70,0,0" Grid.RowSpan="2">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
@@ -94,9 +154,10 @@
             <Border
                 x:Name="webcamContainer"
                 Grid.Column="0"
-                Width="300"
+                Width="550"
                 Height="300"
                 BorderBrush="Black"
+                CornerRadius="10"
                 BorderThickness="2">
 
                 <Image x:Name="webcamPreview" />
@@ -111,8 +172,18 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Button Content="Take a picture" HorizontalAlignment="Left" Height="36" Margin="40,0,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="150" Click="btnPic_Click"/>
 
+                <Border
+                    x:Name="finalContainer"
+                    Grid.Column="0"
+                    Width="200"
+                    Height="300"
+                    BorderBrush="Black"
+                    CornerRadius="10"
+                    BorderThickness="2">
+
+                    <TextBlock Name="finalResults" Text="Final Results" Margin="8,8,8,-8" />
+                </Border>
             </Grid>
 
         </Grid>
@@ -121,25 +192,27 @@
         <StackPanel
             Grid.Row="2"
             HorizontalAlignment="Center"
-            Orientation="Horizontal">
+            Orientation="Horizontal" Margin="0,125,0,63">
 
-            <Button
-                x:Name="btnStart"
-                Width="100"
-                Margin="10"
-                Padding="10"
-                Click="btnStart_Click"
-                Content="Start" />
-            <Button
-                x:Name="btnStop"
-                Width="100"
-                Margin="10"
-                Padding="10"
-                Click="btnStop_Click"
-                Content="Stop"
-                IsEnabled="False" />
+            <Button Style="{DynamicResource RoundedButtonStyle}"
+                    x:Name="btnStart"
+                    Width="100"
+                    Margin="10"
+                    Padding="10"
+                    Click="btnStart_Click"
+                    FontSize="15"
+                    Content="Start" />
+            <Button Style="{DynamicResource RoundedButtonStyle}"
+                    x:Name="btnStop"
+                    Width="100"
+                    Margin="10"
+                    Padding="10"
+                    Click="btnStop_Click"
+                    Content="Take Photo"
+                    FontSize="15"
+                    IsEnabled="False" />
+
         </StackPanel>
 
     </Grid>
-
 </Window>
