@@ -76,7 +76,7 @@ namespace WebcamWithOpenCV
                 encoder.Save(fileStream);
             }
             string text = _webcamStreaming.AnalyzeImage();
-            finalResults.Text += text;
+            finalResults.Text = text;
             _webcamStreaming?.Dispose();
         }
 

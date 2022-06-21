@@ -157,8 +157,16 @@ namespace WebcamWithOpenCV
 
             // Make a single prediction on the sample data and print results
             var predictionResult = FaceModel.Predict(sampleData);
-            return $"\nPredicted Label value: {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n\n";
-        }
+            string final = $"Final Result: {predictionResult.Prediction}\n";
+            string[] names = {"Jonas", "Niklas", "Paul"};
+
+            for (int i = 0; i < names.Length; i++)
+            {
+                final += $"\nPerson: {names[i]} \n Score: {predictionResult.Score[i] * 100}%\n";
+            }
+
+            return final;
+        } 
         public partial class FaceModel
         {
             /// <summary>
