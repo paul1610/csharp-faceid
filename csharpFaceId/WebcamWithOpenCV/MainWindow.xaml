@@ -8,6 +8,7 @@
     Title="CSharp Face ID"
     Width="900"
     Height="600"
+    ResizeMode="NoResize"
     Closing="Window_Closing"
     Background="#93A5AD" 
     mc:Ignorable="d">
