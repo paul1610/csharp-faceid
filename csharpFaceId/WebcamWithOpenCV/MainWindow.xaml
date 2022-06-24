@@ -192,8 +192,8 @@
 
         <StackPanel
             Grid.Row="2"
-            HorizontalAlignment="Center"
-            Orientation="Horizontal" Margin="0,125,0,63">
+            HorizontalAlignment="Left"
+            Orientation="Horizontal" Margin="190,115,0,70">
 
             <Button Style="{DynamicResource RoundedButtonStyle}"
                     x:Name="btnStart"
@@ -214,6 +214,14 @@
                     IsEnabled="False" />
 
         </StackPanel>
+        <Button Style="{DynamicResource RoundedButtonStyle}"
+                    x:Name="btnUpload"
+                    Margin="662,125,105,80"
+                    Padding="10"
+                    Click="btnUpload_Click"
+                    Content="New Model"
+                    FontSize="15"
+                    IsEnabled="True" Grid.Row="2" />
 
     </Grid>
 </Window>

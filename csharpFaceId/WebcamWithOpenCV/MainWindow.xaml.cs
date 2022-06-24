@@ -80,15 +80,14 @@ namespace WebcamWithOpenCV
             _webcamStreaming?.Dispose();
         }
 
+        private async void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+            WebcamStreaming.Run();
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _webcamStreaming?.Dispose();
         }
-
-        private void btnPic_Click(object sender, RoutedEventArgs e)
-        {
-			
-        }
-
     }
 }
