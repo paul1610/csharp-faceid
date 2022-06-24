@@ -83,6 +83,7 @@
     <Compile Include="BitmapExtensions.cs" />
     <Compile Include="CameraDevice.cs" />
     <Compile Include="CameraDevicesEnumerator.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="WebcamStreaming.cs" />
     <Page Include="MainWindow.xaml">
@@ -133,7 +134,7 @@
       <Version>2.9.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.ML">
-      <Version>1.6.0</Version>
+      <Version>1.7.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.ML.ImageAnalytics">
       <Version>1.6.0</Version>
