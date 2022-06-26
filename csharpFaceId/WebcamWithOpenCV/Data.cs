@@ -7,43 +7,41 @@ using System.Threading.Tasks;
 
 namespace WebcamWithOpenCV
 {
-    /*   public class ImgData
-       {
-           //path of the image file
-           public string ImgPath { get; set; }
-           //category to which the image in ImgPath belongs to    
-           public string Label { get; set; }
-       }
-       public class InputData
-       {
-           public byte[] Img { get; set; } //byte representation of image
-           public UInt32 LabelKey { get; set; } //numerical representation of label
-           public string ImgPath { get; set; } //path of the image
-           public string Label { get; set; }
-       }
-
-       public class Output
-       {
-           public string ImgPath { get; set; } //path of the image
-           public string Label { get; set; } //target category
-           public UInt32 PredictedLabel { get; set; } //predicted label
-       }*/
-
     public class ImageData
     {
-        [LoadColumn(0)]
-        public string ImagePath;
+        public ImageData(string imageSource, string label)
+        {
+            ImageSource = imageSource;
+            Label = label;
+        }
 
-        [LoadColumn(1)]
-        public string Label;
+        public readonly string ImageSource;
+
+        public readonly string Label;
     }
 
-    public class ImagePrediction : ImageData
+    public class InMemoryImageData
     {
+        public InMemoryImageData(byte[] image, string label, string imageFileName)
+        {
+            Image = image;
+            Label = label;
+            ImageFileName = imageFileName;
+        }
+
+        public readonly byte[] Image;
+
+        public readonly string Label;
+
+        public readonly string ImageFileName;
+    }
+
+    public class ImagePrediction
+    {
+        [ColumnName("Score")]
         public float[] Score;
 
-        public string PredictedLabelValue;
+        [ColumnName("PredictedLabel")]
+        public string PredictedLabel;
     }
-
-
 }

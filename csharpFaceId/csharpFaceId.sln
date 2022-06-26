@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharpFaceId", "WebcamWithOpenCV\csharpFaceId.csproj", "{6A706DDC-4625-444E-ADA5-B363D3865D09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceIdTrain.ConsoleApp", "FaceIdTrain.ConsoleApp\FaceIdTrain.ConsoleApp.csproj", "{D3921D90-3CC5-4770-9030-F1221681CE4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{6A706DDC-4625-444E-ADA5-B363D3865D09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A706DDC-4625-444E-ADA5-B363D3865D09}.Release|x64.ActiveCfg = Release|x64
 		{6A706DDC-4625-444E-ADA5-B363D3865D09}.Release|x64.Build.0 = Release|x64
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3921D90-3CC5-4770-9030-F1221681CE4D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

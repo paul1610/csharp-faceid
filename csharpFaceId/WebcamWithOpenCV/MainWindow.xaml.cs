@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Windows;
-using System.Drawing;
-using System.Windows.Documents;
-using System.Windows.Media;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
 using System.IO;
 using System.Windows.Media.Imaging;
+using ImageClassification.Train;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using Microsoft.ML;
+using System.Collections.Generic;
+using static Microsoft.ML.Transforms.ValueToKeyMappingEstimator;
+using System.Linq;
 
 namespace WebcamWithOpenCV
 {
     public partial class MainWindow : System.Windows.Window
     {
+       
         private WebcamStreaming _webcamStreaming;
 
         public MainWindow()
@@ -80,9 +83,16 @@ namespace WebcamWithOpenCV
             _webcamStreaming?.Dispose();
         }
 
-        private async void btnUpload_Click(object sender, RoutedEventArgs e)
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
         {
-            WebcamStreaming.Run();
+            MessageBox.Show("Please add your Pictures, with the name of the person into the TrainData folder!");
+            ProcessStartInfo startinfo = new ProcessStartInfo();
+            startinfo.FileName = $"{Directory.GetCurrentDirectory()}/../../../../FaceIdTrain.ConsoleApp/bin/Debug/net6.0/FaceIdTrain.ConsoleApp.exe";
+            startinfo.CreateNoWindow = true;
+            startinfo.UseShellExecute = true;
+
+            Process p = Process.Start(startinfo);
+            p.WaitForExit();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
