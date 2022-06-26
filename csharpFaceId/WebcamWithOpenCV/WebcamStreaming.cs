@@ -158,11 +158,12 @@ namespace WebcamWithOpenCV
             var predictionResult = FaceModel.Predict();
 
             string final = $"Final Result: {predictionResult.PredictedLabel}\n";
-            string[] names = { "Jonas", "Niklas", "Paul" };
+            string[] names = Directory.GetDirectories("../../../../../TrainData");
             float recognized = 0;
 
             for (int i = 0; i < names.Length; i++)
             {
+                names[i] = names[i].Split('\\').Last();
                 if (predictionResult.Score[i] > recognized)
                 {
                     recognized = predictionResult.Score[i];

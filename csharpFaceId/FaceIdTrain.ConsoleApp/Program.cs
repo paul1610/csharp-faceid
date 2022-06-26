@@ -68,8 +68,9 @@ namespace ImageClassification.Train
 
                 var temp = Path.GetDirectoryName(file);
                 var label = temp.Split('\\')[temp.Split('\\').Length - 1];
+                var path = file.Split('\\');
 
-                yield return new InMemoryImageData(File.ReadAllBytes(file), label, label);
+                yield return new InMemoryImageData(File.ReadAllBytes(file), label, path[path.Length - 2] + "/" + path[path.Length - 1]);
             }
         }
     }

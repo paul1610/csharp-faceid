@@ -2,7 +2,6 @@
 using System.Windows;
 using System.IO;
 using System.Windows.Media.Imaging;
-using ImageClassification.Train;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Microsoft.ML;
