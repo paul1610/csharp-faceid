@@ -22,7 +22,7 @@ namespace ImageClassification.Train
             IDataView fullImagesDataset = mlContext.Data.LoadFromEnumerable(images);
             IDataView shuffledFullImageFilePathsDataset = mlContext.Data.ShuffleRows(fullImagesDataset);
 
-            // 3. Load Images with in-memory type within the IDataView and Transform Labels to Keys (Categorical)
+            // 1. Load Images with in-memory type within the IDataView and Transform Labels to Keys (Categorical)
             IDataView shuffledFullImagesDataset = mlContext.Transforms.Conversion.
                     MapValueToKey(outputColumnName: "LabelAsKey", inputColumnName: "Label", keyOrdinality: KeyOrdinality.ByValue)
                 .Append(mlContext.Transforms.LoadRawImageBytes(
@@ -32,7 +32,7 @@ namespace ImageClassification.Train
                 .Fit(shuffledFullImageFilePathsDataset)
                 .Transform(shuffledFullImageFilePathsDataset);
 
-            // 5. Define the model's training pipeline
+            // 2. Define the model's training pipeline
             var pipeline = mlContext.MulticlassClassification.Trainers
                     .ImageClassification(featureColumnName: "Image",
                                          labelColumnName: "LabelAsKey")
@@ -40,7 +40,7 @@ namespace ImageClassification.Train
                                                                       inputColumnName: "PredictedLabel"));
 
 
-            // 6. Train/create the ML model
+            // 3. Train/create the ML model
             var watch = Stopwatch.StartNew();
 
             //Train
