@@ -208,10 +208,10 @@ namespace WebcamWithOpenCV
 
                     var prediction = predictionEngine.Predict(imageToPredict);
 
-                    MessageBox.Show(
+                    /*MessageBox.Show(
                         $"Image Filename : [{imageToPredict.Label}], " +
                         $"Scores : [{string.Join(",", prediction.Score)}], " +
-                        $"Predicted Label : {prediction.PredictedLabel}");
+                        $"Predicted Label : {prediction.PredictedLabel}");*/
                     return prediction;
                 }
                 catch (Exception ex)
