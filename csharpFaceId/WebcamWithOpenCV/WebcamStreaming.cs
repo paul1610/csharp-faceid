@@ -172,7 +172,7 @@ namespace WebcamWithOpenCV
                 final += $"\nPerson: {names[i]} \n Score: {predictionResult.Score[i] * 100}%\n";
             }
 
-            //if (recognized >= 0.6)
+            if (recognized >= 0.6)
             {
                 return final;
             }

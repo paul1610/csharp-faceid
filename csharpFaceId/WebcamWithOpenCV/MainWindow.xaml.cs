@@ -90,6 +90,7 @@ namespace WebcamWithOpenCV
             startinfo.CreateNoWindow = true;
             startinfo.UseShellExecute = true;
 
+            Process.Start($"{Directory.GetCurrentDirectory()}/../../../../../TrainData");
             Process p = Process.Start(startinfo);
             p.WaitForExit();
         }
