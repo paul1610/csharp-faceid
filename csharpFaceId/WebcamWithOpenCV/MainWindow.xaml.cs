@@ -93,6 +93,8 @@ namespace WebcamWithOpenCV
             Process.Start($"{Directory.GetCurrentDirectory()}/../../../../../TrainData");
             Process p = Process.Start(startinfo);
             p.WaitForExit();
+
+            MessageBox.Show("Model Creation finished!");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
