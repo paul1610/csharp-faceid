@@ -41,6 +41,10 @@ namespace ImageClassification.Train
 
 
             // 3. Train/create the ML model
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Starting the training... This might take a while!");
+            Console.ForegroundColor = ConsoleColor.White;
             var watch = Stopwatch.StartNew();
 
             //Train
@@ -49,6 +53,7 @@ namespace ImageClassification.Train
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Training with transfer learning took: {elapsedMs / 1000} seconds");
 
             // 4. Save the model to assets/outputs

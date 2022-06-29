@@ -8,6 +8,7 @@ using Microsoft.ML;
 using System.Collections.Generic;
 using static Microsoft.ML.Transforms.ValueToKeyMappingEstimator;
 using System.Linq;
+using System.Threading;
 
 namespace WebcamWithOpenCV
 {
@@ -65,8 +66,8 @@ namespace WebcamWithOpenCV
             btnStop.IsEnabled = false;
             btnStart.IsEnabled = true;
 
+            var fileName = "screenshot.png";
             var picture = _webcamStreaming.LastPngFrame;
-            string fileName = "screenshot.png";
             using (var fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BitmapEncoder encoder = new PngBitmapEncoder();
@@ -80,21 +81,75 @@ namespace WebcamWithOpenCV
             string text = _webcamStreaming.AnalyzeImage();
             finalResults.Text = text;
             _webcamStreaming?.Dispose();
+            webcamContainer.Visibility = Visibility.Collapsed;
         }
 
-        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        private async void btnUpload_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Please add your Pictures, with the name of the person into the TrainData folder!");
-            ProcessStartInfo startinfo = new ProcessStartInfo();
-            startinfo.FileName = $"{Directory.GetCurrentDirectory()}/../../../../FaceIdTrain.ConsoleApp/bin/Debug/net6.0/FaceIdTrain.ConsoleApp.exe";
-            startinfo.CreateNoWindow = true;
-            startinfo.UseShellExecute = true;
+            string dirName = InputTextBox.Text;
+            if (dirName != "" && dirName.Contains(" "))
+                MessageBox.Show("Please input a valid Name!");
+            else
+            {
+                int count = 0;
+                string newDir = $"{Directory.GetCurrentDirectory()}/../../../../../TrainData/{dirName}";
+                if(Directory.Exists(newDir))
+                {
+                    string[] files = Directory.GetFiles(newDir);
+                    foreach (string file in files)
+                    {
+                        File.SetAttributes(file, FileAttributes.Normal);
+                        File.Delete(file);
+                    }
 
-            Process.Start($"{Directory.GetCurrentDirectory()}/../../../../../TrainData");
-            Process p = Process.Start(startinfo);
-            p.WaitForExit();
+                    Directory.Delete(newDir);
+                }
+                Directory.CreateDirectory(newDir);
 
-            MessageBox.Show("Model Creation finished!");
+                btnStart_Click(null, null);
+                MessageBox.Show("Starting making Images!");
+
+                var fileName = "modelCreation";
+                do
+                {
+                    using (var fileStream = new FileStream($"{fileName}{count}.png", FileMode.Create))
+                    {
+                        await _webcamStreaming.Stop();
+                        var picture = _webcamStreaming.LastPngFrame;
+
+                        BitmapEncoder encoder = new PngBitmapEncoder();
+                        var bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = new MemoryStream(picture);
+                        bitmapImage.EndInit();
+                        encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+                        encoder.Save(fileStream);
+
+                        Thread.Sleep(500);
+                        count++;
+                        await _webcamStreaming.Start();
+                    }
+                } while (count <= 20);
+
+                for(int i = 0; i <= 20; i++)
+                {
+                    File.Move($"{fileName}{i}.png", $"{Directory.GetCurrentDirectory()}/../../../../../TrainData/{dirName}/{dirName}{i}.png");
+                }
+
+                MessageBox.Show("Finished making Images!");
+
+                _webcamStreaming?.Dispose();
+                webcamContainer.Visibility = Visibility.Collapsed;
+
+                ProcessStartInfo startinfo = new ProcessStartInfo();
+                startinfo.FileName = $"{Directory.GetCurrentDirectory()}/../../../../FaceIdTrain.ConsoleApp/bin/Debug/net6.0/FaceIdTrain.ConsoleApp.exe";
+                startinfo.CreateNoWindow = true;
+                startinfo.UseShellExecute = true;
+                Process p = Process.Start(startinfo);
+                p.WaitForExit();
+
+                MessageBox.Show("Model Creation finished!");
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
